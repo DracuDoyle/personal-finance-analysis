@@ -33,6 +33,7 @@ df[ 'Date' ] = pd.to_datetime( df[ 'Date' ] )
 df[ 'anio' ] = df[ 'Date' ].dt.year
 df[ 'mes' ] = df[ 'Date' ].dt.month
 df[ 'trimestre' ] = df[ 'Date' ].dt.quarter
+df[ 'anio_mes' ] = df[ 'Date' ].dt.to_period( 'M' ).astype( str )
 
 
 # Parte 3. Clasificar cada transaccion
@@ -69,7 +70,7 @@ dim_cuenta[ 'id_cuenta' ] = dim_cuenta.index + 1
 
 # Parte 5. Verificar
 
-print(df[ [ 'Date', 'anio', 'mes', 'trimestre', 'tipo_real' ] ].head( 10 ) )
+print( df[ [ 'Date', 'anio', 'mes', 'trimestre', 'tipo_real', 'anio_mes' ] ].head( 10 ) )
 print( '\nCategorias:\n', dim_categoria )
 print( '\nCuentas:\n', dim_cuenta )
 
